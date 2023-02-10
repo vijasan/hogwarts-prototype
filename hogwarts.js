@@ -65,14 +65,23 @@ function displayStudent(student) {
     .content.cloneNode(true);
 
   // set clone data
-  clone.querySelector("[data-field=firstname]").textContent = student.firstname;
-  clone.querySelector("[data-field=lastname]").textContent = student.lastname;
+  clone.querySelector("[data-field=firstname]").textContent =
+    student.firstname.charAt(0).toUpperCase() +
+    student.firstname.slice(1).toLowerCase();
+  clone.querySelector("[data-field=lastname]").textContent =
+    student.lastname.charAt(0).toUpperCase() +
+    student.lastname.slice(1).toLowerCase();
   clone.querySelector("[data-field=middlename]").textContent =
-    student.middlename;
+    student.middlename
+      ? student.middlename.charAt(0).toUpperCase() +
+        student.middlename.slice(1).toLowerCase()
+      : "";
 
   clone.querySelector("[data-field=nickname]").textContent =
     student.nickname || "";
-  clone.querySelector("[data-field=house]").textContent = student.house;
+  clone.querySelector("[data-field=house]").textContent =
+    student.house.charAt(0).toUpperCase() +
+    student.house.slice(1).toLowerCase();
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
